@@ -1,4 +1,17 @@
 FirstApp::Application.routes.draw do
+
+  #resources :microposts
+  resources :users
+
+  get "/users" => "users#index", :as => :users
+  post "/users/new" => "users#create"
+
+  get "/users/new" => "users#new", :as => :new_user
+
+  get "/user/:id" => "users#show", :as => :user
+
+  get "user/:id/edit" => "users#{edit}", :as => :edit_user
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
