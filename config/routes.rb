@@ -1,6 +1,6 @@
 FirstApp::Application.routes.draw do
 
-  #resources :microposts
+  resources :microposts
   resources :users
 
   get "/users" => "users#index", :as => :users
