@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :find_user, :only => [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -16,16 +17,29 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.update(params[:user])
+    #@user = User.find(params[:id])
+    @user.update_attributes(params[:user])
     redirect_to user_path(@user)
+  end
+
+  def destroy
+    #@user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "User successfully destroyed"
+    redirect_to users_path
+  end
+
+  private
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

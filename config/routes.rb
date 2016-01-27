@@ -9,8 +9,10 @@ FirstApp::Application.routes.draw do
   get "/users/new" => "users#new", :as => :new_user
 
   get "/user/:id" => "users#show", :as => :user
+  put "/user/:id" => "users#update" #in rails 4 si usa 'patch' invece che 'put'
+  delete "/user/:id" => "users#destroy"
 
-  get "user/:id/edit" => "users#{edit}", :as => :edit_user
+  get "/user/:id/edit" => "users#edit", :as => :edit_user
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
