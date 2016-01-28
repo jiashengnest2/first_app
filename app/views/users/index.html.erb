@@ -8,7 +8,9 @@
   <th></th>
   <th></th>
   </tr>
-
+  <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
   <% @users.each do |user| %>
 
     <tr>

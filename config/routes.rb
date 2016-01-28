@@ -1,12 +1,16 @@
 FirstApp::Application.routes.draw do
 
+  get "sessions/new"
+
+  resources :widgets
+
   resources :microposts
   resources :users
 
-  get "/users" => "users#index", :as => :users
+  get "/users" => "users#index", :as => :users 
   post "/users/new" => "users#create"
 
-  get "/users/new" => "users#new", :as => :new_user
+  get "/users/new" => "users#new", :as => :new_user #va bene anche match "/new", :to => "users#new" 
 
   get "/user/:id" => "users#show", :as => :user
   put "/user/:id" => "users#update" #in rails 4 si usa 'patch' invece che 'put'

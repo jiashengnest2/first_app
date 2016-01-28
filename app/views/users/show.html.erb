@@ -1,6 +1,11 @@
 <% content_for :title, 'Show User' %>
 <h1><%= full_title(yield(:title))%></h1>
 
+<% if flash[:notice] %>
+  <p class="flash-notice"><%= flash[:notice] %></p>
+<% end %>
+  
+
 <p>
   <%= @user.name %>
 </p>
