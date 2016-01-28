@@ -1,9 +1,16 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
-  attr_accessor :password, :password_confirmation
-  #has_secure_password
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  before_save {|user| user.email = email.downcase}
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessor :password, :password_confirmation, :password_salt, :password_hash
+  #has_secure_password
+  before_save :encrypt_password
+  #before_save {|user| user.email = email.downcase}
 
   validates :name, :presence => true, :length => {:maximum =>  50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

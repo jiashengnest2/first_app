@@ -1,2 +1,22 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% content_for(:title, "Sign in") %>
+<h1><%= full_title(yield(:title))%></h1>
+
+  <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <div>
+    <%= form_for(:session, :url => sessions_path) do |f| %>
+
+      <%= f.label :email %><br>
+      <%= f.text_field :email %><br>
+
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br>
+
+      <%= f.submit "Sign in"%>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+
+  <%= link_to "back", users_path %> 

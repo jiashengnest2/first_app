@@ -24,6 +24,10 @@
   <% end %>
 </table>
 
+<% if @users.size == 0%>
+  <em>No Users Found</em>
+<% end %>
+
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>

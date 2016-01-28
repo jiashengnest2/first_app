@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user]) #non c'è la gemma strong_parameter quindi non è possibile fare con user_params da definire
                                     #nel private def user_params params.require(:user).permit(:name, :email) end (solo rails 4)                             
     if @user.save
-      flash[:notice] = "User successfully created"
+      flash[:notice] = "Signed Up!"
       redirect_to user_path(@user)
     else 
       render :new #oppure render "new"

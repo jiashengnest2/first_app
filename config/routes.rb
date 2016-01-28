@@ -1,16 +1,17 @@
 FirstApp::Application.routes.draw do
 
-  get "sessions/new"
+  devise_for :users
 
-  resources :widgets
+  get "sessions/new", :as => "log_in"
+  get "sessions/destroy", :as => "log_out"
 
-  resources :microposts
+  resources :sessions
   resources :users
 
   get "/users" => "users#index", :as => :users 
   post "/users/new" => "users#create"
 
-  get "/users/new" => "users#new", :as => :new_user #va bene anche match "/new", :to => "users#new" 
+  get "/users/new" => "users#new", :as => :signup #va bene anche match "/new", :to => "users#new" 
 
   get "/user/:id" => "users#show", :as => :user
   put "/user/:id" => "users#update" #in rails 4 si usa 'patch' invece che 'put'

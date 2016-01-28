@@ -7,7 +7,7 @@ gem 'rails', '3.0.20'
 
 gem 'sqlite3'
 
-gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt-ruby', :require => "bcrypt"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,3 +32,5 @@ gem 'bcrypt-ruby', '3.0.1'
 #   gem 'webrat'
 # end
 gem "rspec-rails", :group => [:development, :test]
+
+gem 'devise'
